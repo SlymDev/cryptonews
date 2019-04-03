@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Prices {% endblock %}
+
+{% block content %}
+	{% if notfound %}
+		{{notfound}}
+	{% endif %}
+	{% if result.Response %}
+		sorry, {{quote}} doesn't exist
+	{% endif %}
+
+	{% for key,value in result.DISPLAY.items %}
+			<strong>Name </strong>: {{key}}</br>
+			<strong>PRICE </strong>: {{value.USD.PRICE }}</br>
+			<strong>HIGHDAY </strong>: {{value.USD.HIGHDAY }}</br>
+			<strong>LOWDAY </strong>: {{value.USD.LOWDAY }}</br>
+			<strong>MKTCAP </strong>: {{value.USD.MKTCAP }}</br><br>
+	{% endfor %}
+{% endblock %}

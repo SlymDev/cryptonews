@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock %}
+
+{% block content %}
+	<div class="jumbotron" style="width: 100%; text-align: center;">
+		<h3 class="display-4">Welcome to Crypto News!</h3>
+		<p class="lead">Your source for Crypto Currency & Blockchain News</p>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped table-hover table-bordered">
+				<thead>
+					<tr style="text-align: center;">
+						<th scope="col">Name</th>
+						<th scope="col">Price</th>
+						<th scope="col">Daily High</th>
+						<th scope="col">Daily Low</th>
+						<th scope="col">MarketCap</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for key,value in prices.DISPLAY.items %}
+						<tr>
+							<td>{{key }}</td>
+							<td>{{value.USD.PRICE }}</td>
+							<td>{{value.USD.HIGHDAY }}</td>
+							<td>{{value.USD.LOWDAY }}</td>
+							<td>{{value.USD.MKTCAP }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">	
+		{% for x in news.Data %}
+			<div class="col-md-4 col-12">
+				<div class="card" style="">
+					<img src="{{x.imageurl}}" class="card-img-top" alt="{{x.source}}">
+				  <div class="card-body">
+				    <h5 class="card-title">{{x.title}}</h5>
+				    <a href="{{x.url}}" class="btn btn-primary">Read more</a>
+				  </div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
